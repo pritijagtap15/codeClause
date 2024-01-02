@@ -1,0 +1,79 @@
+import java.util.*;
+class CurrrncyConvertor
+ {
+    
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("********Welcome to Currency Convertor**********");
+        System.out.println("1.Rupee");
+        System.out.println("2.Doller");
+        System.out.println("3.Euro");
+        //get currency for convertor
+        System.out.println("Enter a currency");
+        int currency=sc.nextInt();
+
+        //get amount from user for conersion
+        System.out.println("Enter a amount for conversion");
+        double amt = sc.nextDouble();
+
+        switch(currency)
+        {
+            case 1:
+                rupee_to_amt(amt);
+                break;
+
+            case 2:
+                dollerToAmt(amt);
+                break;
+
+            case 3:
+                euroToAmt(amt);
+                break;
+             
+            default:
+                System.out.println("Enter Valid Choice");
+        }
+    }
+        public static void rupee_to_amt(double amt)
+        {
+            //Rupee to doller
+            System.out.println("Rupee to doller Conversion");
+            System.out.println("1 rupee =" + 0.013 + "Doller");
+            System.out.println(amt + "Rupee = " + (amt*0.013) + " Doller");
+            //rupee to euro
+            System.out.println("Rupee to Euro conversion");
+            System.out.println("1 Rupee=" + 0.012 + "Euro");
+            System.out.println(amt + "Rupee=" + (amt*0.012) + "Euro");
+        }
+
+
+        public static void dollerToAmt(double amt)
+        {
+            //doller to rupee
+            System.out.println("-------Doller to rupee Conversion------");
+            System.out.println("1 Doller=" + 79.37 + "Rupee");
+            System.out.println(amt + "Doller="+ (amt*79.37) + "Rupee");
+            //doller to euro
+            System.out.println("-----Doller to Euro conversion-----");
+            System.out.println("1 Doller ="+0.98+"Euro");
+            System.out.println(amt + "Doller" + (amt*0.98) + "Euro");
+
+        }
+         public static void euroToAmt(double amt)
+        {
+            //euro to rupee
+            System.out.println("-------Euro to rupee Conversion------");
+            System.out.println("1 Euro= "+ 80.85 + "Rupee");
+            System.out.println(amt + "Doller=" + (amt*80.85) + "Rupee");
+            //doller to euro
+            System.out.println("-------Doller to Euro conversion---------");
+            System.out.println("1 Doller ="+ 1.02 + "Doller");
+            System.out.println(amt + "Doller" + (amt*1.02) + "Doller");
+
+        }
+
+
+    
+    
+}
