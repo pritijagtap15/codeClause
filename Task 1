@@ -1,0 +1,92 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Resume extends JFrame {
+    private JTextField name, email;
+    private JTextArea phone, education, experience;
+    private JLabel l1, l2, l3, l4, l5;
+
+    public Resume() {
+        super("Resume Generator");
+
+        l1 = new JLabel("Name:");
+        name = new JTextField(20);
+        l2 = new JLabel("Email:");
+        email = new JTextField(20);
+        l3 = new JLabel("Phone");
+        phone = new JTextArea(5, 20);
+        l4 = new JLabel("Education");
+        education = new JTextArea(5, 20);
+        l5 = new JLabel("Experience");
+        experience = new JTextArea(5, 20);
+
+        JButton generateButton = new JButton("Generate Resume");
+
+        // Set layout
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+
+        add(l1);
+        add(name);
+        add(l2);
+        add(email);
+        add(l3);
+        add(phone);
+        add(l4);
+        add(education);
+        add(l5);
+        add(experience);
+        add(generateButton);
+
+
+        // Handle button click
+        generateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                generateResume();
+            }
+        });
+
+        // Set frame properties
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+        setLocationRelativeTo(null); // Center the frame
+        setVisible(true);
+    }
+
+    private JPanel createLabelAndTextArea(JLabel label, JTextArea textArea) {
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(textArea);
+        return panel;
+    }
+
+    private void generateResume() {
+        // Retrieve user input
+        String name = this.name.getText();
+        String email = this.email.getText();
+        String phone = this.phone.getText();
+        String education = this.education.getText();
+        String experience = this.experience.getText();
+
+        // Display the generated resume
+        String resume = "*************** Resume ***************\n" +
+                "Name: " + name + "\n" +
+                "Email: " + email + "\n" +
+                "Phone: " + phone + "\n" +
+                "Education: " + education + "\n" +
+                "Work Experience: " + experience + "\n" +
+                "*************************************";
+
+        JOptionPane.showMessageDialog(this, resume);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Resume();
+            }
+        });
+    }
+}
