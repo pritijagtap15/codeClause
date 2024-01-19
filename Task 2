@@ -1,79 +1,64 @@
+/*Random password Generator:- It will generate a strong password for your any application for security purpose
+ * I have giving some conditions for it
+ * 1. It must contain some uppercase letter
+ * 2. It must contain lowercase letter
+ * 3.it must contain numeric value
+ * 4. It must contain special Symbol
+ */
+
+
+
 import java.util.*;
-class CurrrncyConvertor
- {
-    
-    public static void main(String[] args) 
-    {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("********Welcome to Currency Convertor**********");
-        System.out.println("1.Rupee");
-        System.out.println("2.Doller");
-        System.out.println("3.Euro");
-        //get currency for convertor
-        System.out.println("Enter a currency");
-        int currency=sc.nextInt();
 
-        //get amount from user for conersion
-        System.out.println("Enter a amount for conversion");
-        double amt = sc.nextDouble();
+public class randompassgenerator {
+    public static void main(String[] args) {
 
-        switch(currency)
-        {
-            case 1:
-                rupee_to_amt(amt);
-                break;
+        System.out.println("++++++++++++++++++Welcome to Random Password Generator++++++++++++++++");
 
-            case 2:
-                dollerToAmt(amt);
-                break;
-
-            case 3:
-                euroToAmt(amt);
-                break;
-             
-            default:
-                System.out.println("Enter Valid Choice");
-        }
+        // last step it will generate a 10 number length of password and print it
+        System.out.print("Here is your random generated password:\t");
+        System.out.print(passGenerator(10));
+         
     }
-        public static void rupee_to_amt(double amt)
+    // Function for password generator
+    public static char[] passGenerator(int length)
+    {
+        //password contain uppercase letter
+        String upperAlphabates="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        //password contain lowercase letter
+        String lowerAlphabates="abcdefghijklmnopqrstuvwxyz";
+
+        //password contain numbers
+        String numbers="1234567890";
+
+        //password contain special symbol
+        String speSymbol="#@!$";
+
+
+        //combine the all conditions to generate a password
+        String combinepass=upperAlphabates+lowerAlphabates+numbers+speSymbol;
+
+        //it will generate random password
+        Random  random = new Random();
+
+        //we contain a 10 character thats why we create a array of character
+        char[] password = new char[length];
+
+
+        //for array we create a loop anf fill the password array with random character
+        for(int i=0;i<length;i++)
         {
-            //Rupee to doller
-            System.out.println("Rupee to doller Conversion");
-            System.out.println("1 rupee =" + 0.013 + "Doller");
-            System.out.println(amt + "Rupee = " + (amt*0.013) + " Doller");
-            //rupee to euro
-            System.out.println("Rupee to Euro conversion");
-            System.out.println("1 Rupee=" + 0.012 + "Euro");
-            System.out.println(amt + "Rupee=" + (amt*0.012) + "Euro");
+
+            //get random element from combination of string
+            int randomIndex = random.nextInt(combinepass.length());
+
+            //pick the random index from combinedet
+            password[i]= combinepass.charAt(randomIndex);
         }
 
-
-        public static void dollerToAmt(double amt)
-        {
-            //doller to rupee
-            System.out.println("-------Doller to rupee Conversion------");
-            System.out.println("1 Doller=" + 79.37 + "Rupee");
-            System.out.println(amt + "Doller="+ (amt*79.37) + "Rupee");
-            //doller to euro
-            System.out.println("-----Doller to Euro conversion-----");
-            System.out.println("1 Doller ="+0.98+"Euro");
-            System.out.println(amt + "Doller" + (amt*0.98) + "Euro");
-
-        }
-         public static void euroToAmt(double amt)
-        {
-            //euro to rupee
-            System.out.println("-------Euro to rupee Conversion------");
-            System.out.println("1 Euro= "+ 80.85 + "Rupee");
-            System.out.println(amt + "Doller=" + (amt*80.85) + "Rupee");
-            //doller to euro
-            System.out.println("-------Doller to Euro conversion---------");
-            System.out.println("1 Doller ="+ 1.02 + "Doller");
-            System.out.println(amt + "Doller" + (amt*1.02) + "Doller");
-
-        }
-
-
-    
+        //return the password
+        return password;
+    }
     
 }
