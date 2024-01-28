@@ -48,7 +48,7 @@ public class systemanpr extends JFrame implements ActionListener {
     private void processImage(File imageFile) {
         try {
             BufferedImage image = ImageIO.read(imageFile);
-            String numberPlate = "RX - 755AJ";
+            String numberPlate = "MH 16 BC 0059";
             displayResult(numberPlate);
         } catch (Exception e) {
             System.out.println("Error in reading the Image!");
@@ -58,7 +58,7 @@ public class systemanpr extends JFrame implements ActionListener {
 
     private void displayResult(String numberPlate) {
         resultLabel.setText("Number Plate: " + numberPlate);
-        resultLabel.setForeground(Color.RED);
+        resultLabel.setForeground(Color.BLACK);
         resultLabel.setFont(resultLabel.getFont().deriveFont(Font.BOLD));
         resultLabel.setFont(resultLabel.getFont().deriveFont(24f));
     }
